@@ -170,6 +170,26 @@ Grafana visualizes metrics through dashboards.
 
 # Access URLs
 
+# Web 1
+
+http://192.168.56.11
+
+# Web 2
+
+http://192.168.56.12
+
+# Web 3
+
+http://192.168.56.13
+
+# Web 4
+
+http://192.168.56.14
+
+#  Loadbalancer
+
+http://192.168.56.20
+
 # Prometheus
 
 http://192.168.56.30:9090
