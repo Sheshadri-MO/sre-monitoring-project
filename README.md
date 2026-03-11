@@ -30,7 +30,7 @@
 
 ![Grafana](screenshots/monitor.png)
 
-### Loadbalancer Dashboard
+### LoadBalancer Dashboard
 
 ![Grafana](screenshots/lb1.png)
 
