@@ -1,0 +1,27 @@
+---
+- name: Configure Web Servers
+  hosts: web
+  become: yes
+
+  tasks:
+
+  - name: Update apt cache
+    apt:
+      update_cache: yes
+
+  - name: Install nginx
+    apt:
+      name: nginx
+      state: present
+
+  - name: Start nginx
+    service:
+      name: nginx
+      state: started
+      enabled: yes
+
+  - name: Create custom index page
+    copy:
+      dest: /var/www/html/index.html
+      content: |
+        <h1>Hello from {{ inventory_hostname }}</h1>

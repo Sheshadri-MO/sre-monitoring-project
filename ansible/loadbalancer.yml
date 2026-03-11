@@ -1,0 +1,39 @@
+---
+- name: Configure Load Balancer
+  hosts: loadbalancer
+  become: yes
+
+  tasks:
+
+  - name: Update apt
+    apt:
+      update_cache: yes
+
+  - name: Install nginx
+    apt:
+      name: nginx
+      state: present
+
+  - name: Configure nginx load balancer
+    copy:
+      dest: /etc/nginx/sites-available/default
+      content: |
+        upstream web_cluster {
+            server 192.168.56.11;
+            server 192.168.56.12;
+            server 192.168.56.13;
+            server 192.168.56.14;
+        }
+
+        server {
+            listen 80;
+
+            location / {
+                proxy_pass http://web_cluster;
+            }
+        }
+
+  - name: Restart nginx
+    service:
+      name: nginx
+      state: restarted
